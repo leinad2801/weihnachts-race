@@ -219,17 +219,17 @@ button {
 }
 /* Top 3 Medaillen */
 .leaderboard-gold {
-  color: #facc15;
+  color: #facc15; /* Gold */
   font-weight: bold;
 }
 
 .leaderboard-silver {
-  color: #e5e7eb;
+  color: #e5e7eb; /* Silber */
   font-weight: bold;
 }
 
 .leaderboard-bronze {
-  color: #f97316;
+  color: #fb923c; /* Bronze */
   font-weight: bold;
 }
 /* Reset Rangliste Button */
