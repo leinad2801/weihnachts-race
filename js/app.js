@@ -97,7 +97,34 @@ function loadLeaderboardOnline() {
       console.error("❌ Fehler beim Laden der Rangliste:", err);
     });
 }
+function resetLeaderboardOnline() {
+  const password = prompt("Admin-Passwort eingeben:");
 
+  if (password !== "0000") {
+    alert("❌ Falsches Passwort");
+    return;
+  }
+
+  db.collection("results")
+    .get()
+    .then(snapshot => {
+      const batch = db.batch();
+
+      snapshot.forEach(doc => {
+        batch.delete(doc.ref);
+      });
+
+      return batch.commit();
+    })
+    .then(() => {
+      alert("✅ Online-Rangliste wurde zurückgesetzt");
+      leaderboardList.innerHTML = "";
+    })
+    .catch(error => {
+      console.error("❌ Fehler beim Zurücksetzen:", error);
+      alert("Fehler beim Löschen der Rangliste");
+    });
+}
 
 // Status
 let currentPuzzle = 0;
@@ -536,15 +563,7 @@ restartBtn.addEventListener("click", () => {
 
 //Rangliste wird zurückgesetzt
 resetLeaderboardBtn.addEventListener("click", () => {
-  const password = prompt("Admin-Passwort eingeben:");
-
-  if (password !== "0000") {
-    alert("❌ Falsches Passwort");
-    return;
-  }
-
-  localStorage.removeItem("results");
-  renderLeaderboard();
-  alert("✅ Rangliste wurde zurückgesetzt");
+  resetLeaderboardOnline();
 });
+
 
