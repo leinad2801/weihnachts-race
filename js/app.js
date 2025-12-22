@@ -61,6 +61,35 @@ function saveResultOnline() {
     console.error("❌ Fehler beim Speichern:", error);
   });
 }
+function loadLeaderboardOnline() {
+  db.collection("results")
+    .orderBy("time", "asc")
+    .orderBy("errors", "asc")
+    .limit(10)
+    .get()
+    .then(snapshot => {
+      leaderboardList.innerHTML = "";
+
+      snapshot.forEach((doc, index) => {
+        const data = doc.data();
+        const li = document.createElement("li");
+
+        let medal = "";
+        if (index === 0) medal = "🥇 ";
+        else if (index === 1) medal = "🥈 ";
+        else if (index === 2) medal = "🥉 ";
+
+        li.textContent =
+          `${medal}${data.name} – ${data.time}s – ❌ ${data.errors}`;
+
+        leaderboardList.appendChild(li);
+      });
+    })
+    .catch(err => {
+      console.error("❌ Fehler beim Laden der Rangliste:", err);
+    });
+}
+
 
 // Status
 let currentPuzzle = 0;
@@ -487,6 +516,8 @@ nextBtn.addEventListener("click", () => {
 
     // 🏁 Rangliste
     saveResultOnline();
+    loadLeaderboardOnline();
+
   }
 });
 
