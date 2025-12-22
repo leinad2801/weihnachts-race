@@ -45,17 +45,30 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+function saveResultOnline() {
+  console.log("🔥 saveResultOnline wurde aufgerufen");
 
-
-
-let startTime = null;
-let timerInterval = null;
+  db.collection("results").add({
+    name: playerName,
+    time: getElapsedSeconds(),
+    errors: totalWrongAttempts,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  })
+  .then(() => {
+    console.log("✅ Ergebnis erfolgreich in Firestore gespeichert");
+  })
+  .catch(error => {
+    console.error("❌ Fehler beim Speichern:", error);
+  });
+}
 
 // Status
 let currentPuzzle = 0;
 let wrongAttempts = 0;
 let selectedPiece = null;
 let endTime = null;
+let startTime = null;
+let timerInterval = null;
 let totalWrongAttempts = 0;
 let playerName = "";
 
@@ -473,8 +486,7 @@ nextBtn.addEventListener("click", () => {
     finalErrors.textContent = `❌ Fehlversuche gesamt: ${totalWrongAttempts}`;
 
     // 🏁 Rangliste
-    saveResult();
-    renderLeaderboard();
+    saveResultOnline();
   }
 });
 
