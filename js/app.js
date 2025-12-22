@@ -34,6 +34,20 @@ const timerDisplay = document.getElementById("timer");
 const finalTime = document.getElementById("final-time");
 const finalErrors = document.getElementById("final-errors");
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCuEzRaTwjVQbIG-WKFUxpjuF33V2FUk9M",
+  authDomain: "weihnachts-race-web.firebaseapp.com",
+  projectId: "weihnachts-race-web",
+  storageBucket: "weihnachts-race-web.firebasestorage.app",
+  messagingSenderId: "1090914728152",
+  appId: "1:1090914728152:web:872fdc43e204f68b22bfad"
+};
+
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+
 
 let startTime = null;
 let timerInterval = null;
