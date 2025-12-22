@@ -1,0 +1,251 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #020617;
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  position: relative;
+  background: #1e293b;
+  padding: 3rem 2rem 5rem;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+}
+
+
+/* Screens */
+#start-screen,
+#game-screen,
+#end-screen {
+  display: none;
+}
+#start-screen { display: block; }
+
+/* Timer */
+#timer {
+  position: absolute;
+  top: 0.6rem;
+  left: 1.2rem;
+  font-size: 0.85rem;
+  color: #e0f2fe;
+  background: #0f172a;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+
+}
+
+#timer::before {
+  content: "🎄 ";
+}
+
+
+
+/* Santa Grid */
+#santa-grid {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.santa {
+  background: #0f172a;
+  border-radius: 12px;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.santa img { width: 100%; }
+
+/* Text Rätsel */
+#text-puzzle { display: none; }
+input {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: none;
+}
+#error-counter { color: #fbbf24; }
+#hint { color: #93c5fd; display: none; }
+
+/* Puzzle */
+#puzzle-game {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+.puzzle-piece {
+  aspect-ratio: 1 / 1;
+  background-image: url("../assets/puzzle/puzzle.png");
+  background-size: 200% 300%;
+  border-radius: 8px;
+}
+.puzzle-piece.selected {
+  outline: 3px solid #22c55e;
+}
+
+/* Labyrinth */
+#maze-game {
+  display: none;
+  margin: 1rem auto;
+  display: grid;
+  gap: 4px;
+  max-width: 300px;
+}
+.maze-cell {
+  aspect-ratio: 1 / 1;
+  background: #334155;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wall { background: #020617; }
+
+/* Buttons */
+button {
+  margin-top: 0.75rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  background: #22c55e;
+}
+#nextBtn {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  background: #38bdf8;
+  display: none;
+}
+
+/* Endscreen */
+#final-time {
+  margin-top: 1rem;
+  color: #a5f3fc;
+}
+#gift-box {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #0f172a;
+  border-radius: 12px;
+}
+
+/* Shake */
+.shake { animation: shake 0.35s; }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+/* Puzzle-Bilder normal groß halten */
+#puzzle-image {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  margin: 0.75rem auto;
+  display: block;
+}
+/* Progressbar */
+#progress-container {
+  width: 100%;
+  height: 10px;
+  background: #020617;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.75rem 0 0.25rem;
+}
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #38bdf8);
+  transition: width 0.4s ease;
+}
+#progress-text {
+  font-size: 0.85rem;
+  color: #a5f3fc;
+  margin-bottom: 0.5rem;
+}
+/* Startbild */
+#start-image {
+  max-width: 300px;
+  width: 100%;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 12px;
+}
+#end-image {
+  max-width: 220px;
+  width: 100%;
+  margin: 1rem auto;
+  display: block;
+  border-radius: 14px;
+}
+#player-name {
+  margin: 1rem 0 0.5rem;
+}
+/* Rangliste */
+#leaderboard {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #0f172a;
+  border-radius: 12px;
+  text-align: left;
+}
+
+#leaderboard h3 {
+  margin-top: 0;
+  text-align: center;
+  color: #a5f3fc;
+}
+
+#leaderboard-list {
+  padding-left: 1.2rem;
+}
+
+#leaderboard-list li {
+  margin-bottom: 0.4rem;
+  font-size: 0.9rem;
+}
+/* Top 3 Medaillen */
+.leaderboard-gold {
+  color: #facc15;
+  font-weight: bold;
+}
+
+.leaderboard-silver {
+  color: #e5e7eb;
+  font-weight: bold;
+}
+
+.leaderboard-bronze {
+  color: #f97316;
+  font-weight: bold;
+}
+/* Reset Rangliste Button */
+#resetLeaderboardBtn {
+  margin-top: 1rem;
+  background: #7c2d12;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.9rem;
+  opacity: 0.6;
+}
+
+#resetLeaderboardBtn:hover {
+  opacity: 1;
+}
+
+
+
+
+

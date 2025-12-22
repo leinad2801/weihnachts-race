@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎄 Weihnachts-Race</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- START -->
+  <div id="start-screen">
+    <h1>🎄Willkommen beim Weihnachts-Race🎄</h1>
+    <img id="start-image" src="assets/images/start.png" alt="Weihnachtsbild">
+    <p>Stelle dich den Rätseln und versuche, schneller zu sein als die anderen!</p>
+    <p>Der Timer läuft, und wer zuerst alle Aufgaben löst, bekommt als Erster sein Geschenk 🎁.</p>
+    <p>Es gibt viele Arten von Rätseln, Puzzle und Mini Games.</p>
+    <p>Sobald du auf Start drückst beginnt die Zeit. Also bist du bereit?</p>
+    <input
+      id="player-name"
+      type="text"
+      placeholder="Dein Name"
+      autocomplete="off"
+    />
+    <button id="startBtn">Start</button>
+  </div>
+
+  <!-- GAME -->
+  <div id="game-screen">
+    <p id="timer">⏱️ Zeit: 00:00</p>
+    <!-- Progress -->
+    <div id="progress-container">
+      <div id="progress-bar"></div>
+    </div>
+    <p id="progress-text">Rätsel 1 / 10</p>
+
+    <h2 id="puzzle-title"></h2>
+    <img id="puzzle-image" />
+    <p id="question"></p>
+
+    <div id="santa-grid"></div>
+
+    <div id="text-puzzle">
+      <input id="answer" type="text" placeholder="Deine Antwort" />
+      <button id="checkBtn">Antwort prüfen</button>
+      <p id="error-counter"></p>
+      <p id="hint"></p>
+    </div>
+
+    <div id="puzzle-game"></div>
+
+    <div id="maze-game"></div>
+    <div id="maze-controls">
+      <button data-dir="up">⬆️</button>
+      <div>
+        <button data-dir="left">⬅️</button>
+        <button data-dir="right">➡️</button>
+      </div>
+      <button data-dir="down">⬇️</button>
+    </div>
+
+    <p id="feedback"></p>
+    <button id="nextBtn">Zum nächsten Rätsel →</button>
+  </div>
+
+  <!-- END -->
+  <div id="end-screen">
+    <h1 id="final-title"></h1>
+    <p>Du hast alle Rätsel gelöst 🎄</p>
+    <p id="final-time"></p>
+    <p id="final-errors"></p>
+    <img id="end-image" src="assets/images/end.png" alt="Weihnachtliches Abschlussbild">
+    <div id="gift-box">
+      <h2>Frohe Weihnachten!</h2>
+      <p>
+        Du bist im Ziel angekommen und deine Zeit steht fest.<br>
+        Jetzt heißt es warten, bis alle anderen das Rennen beendet haben.<br>
+        Wer die schnellste Zeit hat, bekommt zuerst sein Geschenk.🎅🏼 
+      </p>
+    </div>
+    <div id="leaderboard">
+      <h3>🏁 Rangliste</h3>
+      <ol id="leaderboard-list"></ol>
+    </div>
+    
+    <button id="resetLeaderboardBtn">
+      🔒 Rangliste zurücksetzen
+    </button>
+
+    <button id="restartBtn">Nochmal spielen 🔄</button>
+  </div>
+
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
