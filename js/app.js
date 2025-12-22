@@ -75,15 +75,23 @@ function loadLeaderboardOnline() {
         const li = document.createElement("li");
 
         let medal = "";
-        if (index === 0) medal = "🥇 ";
-        else if (index === 1) medal = "🥈 ";
-        else if (index === 2) medal = "🥉 ";
+          if (index === 0) {
+              medal = "🥇 ";
+          li.classList.add("leaderboard-gold");
+  } else if (index === 1) {
+    medal = "🥈 ";
+    li.classList.add("leaderboard-silver");
+  } else if (index === 2) {
+    medal = "🥉 ";
+    li.classList.add("leaderboard-bronze");
+  }
 
-        li.textContent =
-          `${medal}${data.name} – ${data.time}s – ❌ ${data.errors}`;
+  li.textContent =
+    `${medal}${data.name} – ${data.time}s – ❌ ${data.errors}`;
 
-        leaderboardList.appendChild(li);
-      });
+  leaderboardList.appendChild(li);
+});
+
     })
     .catch(err => {
       console.error("❌ Fehler beim Laden der Rangliste:", err);
