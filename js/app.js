@@ -69,22 +69,25 @@ function loadLeaderboardOnline() {
     .get()
     .then(snapshot => {
       leaderboardList.innerHTML = "";
-
-      snapshot.forEach((doc, index) => {
+      
+      let index = 0;
+      
+      snapshot.forEach((doc => {
         const data = doc.data();
         const li = document.createElement("li");
 
         let medal = "";
-          if (index === 0) {
-              medal = "🥇 ";
+        
+        if (index === 0) {
+          medal = "🥇 ";
           li.classList.add("leaderboard-gold");
-  } else if (index === 1) {
-    medal = "🥈 ";
-    li.classList.add("leaderboard-silver");
-  } else if (index === 2) {
-    medal = "🥉 ";
-    li.classList.add("leaderboard-bronze");
-  }
+        } else if (index === 1) {
+          medal = "🥈 ";
+          li.classList.add("leaderboard-silver");
+        } else if (index === 2) {
+          medal = "🥉 ";
+          li.classList.add("leaderboard-bronze");
+        }
 
   li.textContent =
     `${medal}${data.name} – ${data.time}s – ❌ ${data.errors}`;
