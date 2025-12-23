@@ -9,6 +9,8 @@ const checkBtn = document.getElementById("checkBtn");
 const nextBtn = document.getElementById("nextBtn");
 const restartBtn = document.getElementById("restartBtn");
 const resetLeaderboardBtn = document.getElementById("resetLeaderboardBtn");
+resetLeaderboardBtn.style.display = "none"; // Reset-Button standardmäßig verstecken
+
 
 // Elemente
 const title = document.getElementById("puzzle-title");
@@ -323,6 +325,9 @@ startBtn.addEventListener("click", () => {
     finalTitle.textContent = "👑 Admin – Live-Rangliste";
     finalTime.textContent = "";
     finalErrors.textContent = "";
+
+    resetLeaderboardBtn.style.display = "block"; // 🔓 Reset-Button für Admin sichtbar machen
+
 
     // Kein Spiel
     listenToLeaderboard();
