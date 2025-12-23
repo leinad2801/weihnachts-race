@@ -61,6 +61,7 @@ function saveResultOnline() {
     console.error("❌ Fehler beim Speichern:", error);
   });
 }
+
 function loadLeaderboardOnline() {
   db.collection("results")
     .orderBy("time", "asc")
@@ -69,15 +70,16 @@ function loadLeaderboardOnline() {
     .get()
     .then(snapshot => {
       leaderboardList.innerHTML = "";
-      
-      let index = 0;
-      
-      snapshot.forEach((doc => {
+
+      // ✅ Firestore → echtes Array
+      const docs = snapshot.docs;
+
+      docs.forEach((doc, index) => {
         const data = doc.data();
         const li = document.createElement("li");
 
         let medal = "";
-        
+
         if (index === 0) {
           medal = "🥇 ";
           li.classList.add("leaderboard-gold");
@@ -89,17 +91,15 @@ function loadLeaderboardOnline() {
           li.classList.add("leaderboard-bronze");
         }
 
-  li.textContent =
-    `${medal}${data.name} – ${data.time}s – ❌ ${data.errors}`;
-
-  leaderboardList.appendChild(li);
-});
-
+        li.textContent = `${medal}${data.name} – ${data.time}s – ❌ ${data.errors}`;
+        leaderboardList.appendChild(li);
+      });
     })
     .catch(err => {
       console.error("❌ Fehler beim Laden der Rangliste:", err);
     });
 }
+
 function resetLeaderboardOnline() {
   const password = prompt("Admin-Passwort eingeben:");
 
