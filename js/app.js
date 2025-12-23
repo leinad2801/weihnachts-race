@@ -318,7 +318,7 @@ const puzzles = [
     solutions: ["weihnachtsbäckerei", "leckerei", "milch"],
     mode: "containsAll",
     hint: "💡 Tipp: Ein schönes Kinderweihnachtslied... 🎄",
-    hintImage: "assets/images/weihnachtsbäckerei.png"
+    hintImage: "assets/images/weihnachtsbaeckerei.png"
   },
   {
     type: "text",
