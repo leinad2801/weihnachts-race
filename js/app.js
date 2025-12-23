@@ -363,6 +363,7 @@ startBtn.addEventListener("click", () => {
   gameScreen.style.display = "block";
 
   startTime = Date.now();
+  saveGame();
   timerInterval = setInterval(updateTimer, 1000);
 
   loadPuzzle();
@@ -494,6 +495,7 @@ checkBtn.addEventListener("click", () => {
  }
   wrongAttempts++;
   totalWrongAttempts++;
+  saveGame();
   errorCounter.textContent = `Fehlversuche: ${wrongAttempts} / 5`;
   answerInput.value = "";
 
@@ -588,6 +590,7 @@ nextBtn.addEventListener("click", () => {
   currentPuzzle++;
   if (currentPuzzle < puzzles.length) {
     loadPuzzle();
+    saveGame();
   } else {
     
     gameScreen.style.display = "none";
@@ -608,6 +611,7 @@ nextBtn.addEventListener("click", () => {
 
     // 🏁 Rangliste
     saveResultOnline();
+    clearGame();
   }
 });
 
