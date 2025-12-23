@@ -140,9 +140,7 @@ let startTime = null;
 let timerInterval = null;
 let totalWrongAttempts = 0;
 let playerName = "";
-
-
-
+let ADMIN_NAME = "ADMIN"; // Admin Name
 
 // Labyrinth
 const maze = [
@@ -317,15 +315,31 @@ startBtn.addEventListener("click", () => {
 
   playerName = name;
 
+  // 👑 ADMIN-MODUS
+  if (name.toUpperCase() === ADMIN_NAME) {
+    startScreen.style.display = "none";
+    endScreen.style.display = "block";
+
+    finalTitle.textContent = "👑 Admin – Live-Rangliste";
+    finalTime.textContent = "";
+    finalErrors.textContent = "";
+
+    // Kein Spiel
+    listenToLeaderboard();
+
+    return; // Stopp
+  }
+
+  // NORMALER SPIELSTART
   startScreen.style.display = "none";
   gameScreen.style.display = "block";
 
-  // Timer startet ERST hier
   startTime = Date.now();
   timerInterval = setInterval(updateTimer, 1000);
 
   loadPuzzle();
 });
+
 
 
 // 🔄 Rätsel laden
