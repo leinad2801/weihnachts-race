@@ -264,6 +264,13 @@ button {
   padding-top: 0.5rem;
 }
 
+#maze-controls button {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
 
 
 
