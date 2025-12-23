@@ -62,24 +62,27 @@ function saveResultOnline() {
   });
 }
 
-function loadLeaderboardOnline() {
-  db.collection("results")
+let leaderboardUnsubscribe = null;
+
+function listenToLeaderboard() {
+  // Falls Listener schon läuft → vorher stoppen
+  if (leaderboardUnsubscribe) {
+    leaderboardUnsubscribe();
+  }
+
+  leaderboardUnsubscribe = db
+    .collection("results")
     .orderBy("time", "asc")
     .orderBy("errors", "asc")
     .limit(10)
-    .get()
-    .then(snapshot => {
+    .onSnapshot(snapshot => {
       leaderboardList.innerHTML = "";
 
-      // ✅ Firestore → echtes Array
-      const docs = snapshot.docs;
-
-      docs.forEach((doc, index) => {
+      snapshot.docs.forEach((doc, index) => {
         const data = doc.data();
         const li = document.createElement("li");
 
         let medal = "";
-
         if (index === 0) {
           medal = "🥇 ";
           li.classList.add("leaderboard-gold");
@@ -94,9 +97,8 @@ function loadLeaderboardOnline() {
         li.textContent = `${medal}${data.name} – ${data.time}s – ❌ ${data.errors}`;
         leaderboardList.appendChild(li);
       });
-    })
-    .catch(err => {
-      console.error("❌ Fehler beim Laden der Rangliste:", err);
+    }, error => {
+      console.error("❌ Live-Rangliste Fehler:", error);
     });
 }
 
@@ -548,6 +550,10 @@ nextBtn.addEventListener("click", () => {
     
     gameScreen.style.display = "none";
     endScreen.style.display = "block";
+    
+    // 🏁 Live-Scoreboard starten
+    listenToLeaderboard();
+
 
     // 🎬 End-GIF neu starten
     const endImage = document.getElementById("end-image");
@@ -560,8 +566,6 @@ nextBtn.addEventListener("click", () => {
 
     // 🏁 Rangliste
     saveResultOnline();
-    loadLeaderboardOnline();
-
   }
 });
 
