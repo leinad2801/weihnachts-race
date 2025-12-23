@@ -142,7 +142,30 @@ let startTime = null;
 let timerInterval = null;
 let totalWrongAttempts = 0;
 let playerName = "";
-let ADMIN_NAME = "ADMIN"; // Admin Name
+let ADMIN_NAME = "ADMIN"; // Admin Name#
+
+// 💾 Spielstand speichern
+function saveGame() {
+  const saveData = {
+    playerName,
+    currentPuzzle,
+    totalWrongAttempts,
+    startTime
+  };
+  localStorage.setItem("weihnachtsRaceSave", JSON.stringify(saveData));
+}
+
+// ♻️ Spielstand laden
+function loadGame() {
+  const data = localStorage.getItem("weihnachtsRaceSave");
+  return data ? JSON.parse(data) : null;
+}
+
+// 🧹 Spielstand löschen
+function clearGame() {
+  localStorage.removeItem("weihnachtsRaceSave");
+}
+
 
 // Labyrinth
 const maze = [
@@ -597,5 +620,34 @@ restartBtn.addEventListener("click", () => {
 resetLeaderboardBtn.addEventListener("click", () => {
   resetLeaderboardOnline();
 });
+
+window.addEventListener("load", () => {
+  const save = loadGame();
+
+  if (!save) return;
+  if (save.playerName.toUpperCase() === ADMIN_NAME) return;
+
+  const resume = confirm(
+    `Spielstand von ${save.playerName} gefunden.\nMöchtest du weiterspielen?`
+  );
+
+  if (!resume) {
+    clearGame();
+    return;
+  }
+
+  // 🔄 Spielzustand wiederherstellen
+  playerName = save.playerName;
+  currentPuzzle = save.currentPuzzle;
+  totalWrongAttempts = save.totalWrongAttempts;
+  startTime = save.startTime;
+
+  startScreen.style.display = "none";
+  gameScreen.style.display = "block";
+
+  timerInterval = setInterval(updateTimer, 1000);
+  loadPuzzle();
+});
+
 
 
