@@ -142,7 +142,8 @@ let startTime = null;
 let timerInterval = null;
 let totalWrongAttempts = 0;
 let playerName = "";
-let ADMIN_NAME = "ADMIN"; // Admin Name#
+
+const ADMIN_NAME = "ADMIN"; // Admin Name#
 
 // 💾 Spielstand speichern
 function saveGame() {
@@ -425,6 +426,7 @@ function loadPuzzle() {
         if (i === puzzle.correctIndex) {
           feedback.textContent = "🎉 Richtig!";
           nextBtn.style.display = "block";
+          savegame();
         } else {
           feedback.textContent = "❌ Falsch!";
           totalWrongAttempts++;
@@ -537,6 +539,7 @@ function handlePuzzleClick(piece) {
   if (checkPuzzleSolved()) {
     feedback.textContent = "🎉 Puzzle gelöst!";
     nextBtn.style.display = "block";
+    saveGame();
   }
 }
 
@@ -581,6 +584,7 @@ mazeControls.addEventListener("click", e => {
       feedback.textContent = "🎉 Geschafft!";
       nextBtn.style.display = "block";
       mazeControls.style.display = "none";
+      saveGame();
     }
   }
 });
