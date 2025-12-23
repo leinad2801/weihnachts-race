@@ -263,7 +263,7 @@ const puzzles = [
     type: "emoji",
     title: "🧩 Rätsel 4",
     question:
-      "Gesucht ist ein Songname:<br><br>⏮️🎄",
+      "Gesucht ist ein Songname der zu folgenden Emojis passt:<br><br>⏮️🎄",
     solutions: ["last christmas"],
     hint: "💡 Hinweis: Ein sehr bekannter Song 🎤",
     hintImage: "assets/images/wham.png"
@@ -284,7 +284,7 @@ const puzzles = [
   {
     type: "maze",
     title: "🧩 Rätsel 6",
-    question: "Bringe Santa 🎅 durch das Labyrinth zum Geschenk 🎁"
+    question: "Tippe Santa 🎅 durch das Labyrinth zum Geschenk 🎁"
   },
   {
     type: "emoji",
@@ -300,7 +300,7 @@ const puzzles = [
     title: "🧩 Rätsel 8",
     question:
       "Zahlenschloss 🔐<br><br>" +
-      "S A N T A<br>" +
+      "S A N T A<br><br>" +
       "100⁰ − 1",
     solutions: ["5050"],
     hint: "💡 Tipp: Die Summe von 1+2+...+100",
@@ -311,13 +311,14 @@ const puzzles = [
     title: "🧩 Rätsel 9",
     question:
       "🎶 Vervollständige den Liedtext:<br><br>" +
-      "Rockin’ around the Christmas ___<br>" +
-      "at the Christmas ___ hop,<br>" +
-      "mistletoe hung where ___ can see",
-    solutions: ["tree", "party", "you"],
+      "Bitte gib die 3 Wörter einfach mit einem Leerzeichen getrennt unten ein.<br><br>"+
+      "In der _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br>" +
+      "Gibt es so manche _ _ _ _ _ _ _ _,<br>" +
+      "Zwischen Mehl und _ _ _ _ _ ...",
+    solutions: ["weihnachtsbäckerei", "leckerei", "milch"],
     mode: "containsAll",
-    hint: "💡 Tipp: Ein fröhlicher Weihnachtsklassiker 🎄",
-    hintImage: "assets/images/rockin-tree.png"
+    hint: "💡 Tipp: Ein schönes Kinderweihnachtslied... 🎄",
+    hintImage: "assets/images/weihnachtsbäckerei.png"
   },
   {
     type: "text",
@@ -325,7 +326,7 @@ const puzzles = [
     question: "Wie viele Rentiere hat der Weihnachtsmann?",
     solutions: ["9"],
     image: "assets/images/rentier-santa.png",
-    hint: "💡 Tipp: Denk an Rudolph & Co.",
+    hint: "💡 Tipp: Meine Rückennummer bei Tura Oberdrees.",
     hintImage: "assets/images/rentier-santa.png"
   }
 ];
