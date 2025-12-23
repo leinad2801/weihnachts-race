@@ -253,6 +253,18 @@ button {
   padding-bottom: 2rem;
 }
 
+/* Kopfbereich im Endscreen fixieren */
+#final-title,
+#final-time,
+#final-errors {
+  position: sticky;
+  top: 0;
+  background: #1e293b;
+  z-index: 10;
+  padding-top: 0.5rem;
+}
+
+
 
 
 
