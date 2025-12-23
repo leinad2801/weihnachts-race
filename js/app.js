@@ -545,9 +545,15 @@ nextBtn.addEventListener("click", () => {
   if (currentPuzzle < puzzles.length) {
     loadPuzzle();
   } else {
+    
     gameScreen.style.display = "none";
     endScreen.style.display = "block";
 
+    // 🎬 End-GIF neu starten
+    const endImage = document.getElementById("end-image");
+    endImage.src = "";
+    endImage.src = "assets/images/end.gif";
+    
     finalTitle.textContent = `🎉 Klasse, ${playerName}!`;
     finalTime.textContent = `⏱️ Deine Zeit: ${getFinalTime()}`;
     finalErrors.textContent = `❌ Fehlversuche gesamt: ${totalWrongAttempts}`;
