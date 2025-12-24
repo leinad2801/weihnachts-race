@@ -141,6 +141,7 @@ let startTime = null;
 let timerInterval = null;
 let totalWrongAttempts = 0;
 let playerName = "";
+const ADMIN_NAME = "ADMIN"; // Admin Name#
 let LANG = "de";
 const ENGLISH_NAME = "Demarcus";
 
@@ -170,7 +171,6 @@ const TEXTS = {
   }
 };
 
-const ADMIN_NAME = "ADMIN"; // Admin Name#
 
 // 💾 Spielstand speichern
 function saveGame() {
@@ -368,10 +368,9 @@ startBtn.addEventListener("click", () => {
   }
 
   playerName = name;
-  // 🌍 Sprache prüfen (Englisch-Modus)
-      if (name.toUpperCase() === ENGLISH_NAME.toUpperCase()) {
-      LANG = "en";
-    }
+  // 🌍 Sprache festlegen
+  LANG = name.toUpperCase() === ENGLISH_NAME.toUpperCase() ? "en" : "de";
+
 
 
   // 👑 ADMIN-MODUS
