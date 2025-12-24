@@ -157,6 +157,7 @@ const TEXTS = {
     adminTitle: "👑 Admin – Live-Rangliste",
     resume: name =>
       `Spielstand von ${name} gefunden.\nMöchtest du weiterspielen?`
+    start: "Spiel starten"
   },
   en: {
     correct: "🎉 Correct!",
@@ -168,6 +169,7 @@ const TEXTS = {
     adminTitle: "👑 Admin – Live leaderboard",
     resume: name =>
       `Saved game found for ${name}.\nDo you want to continue?`
+    start: "Start game"
   }
 };
 
@@ -370,6 +372,9 @@ startBtn.addEventListener("click", () => {
   playerName = name;
   // 🌍 Sprache festlegen
   LANG = name.toUpperCase() === ENGLISH_NAME.toUpperCase() ? "en" : "de";
+  startBtn.textContent = TEXTS[LANG].start;
+  checkBtn.textContent = TEXTS[LANG].check ?? "Check";
+
 
 
 
@@ -675,6 +680,7 @@ window.addEventListener("load", () => {
     clearGame();
     return;
   }
+  startBtn.textContent = TEXTS[LANG].start;
 
   // 🔄 Spielzustand wiederherstellen
   playerName = save.playerName;
