@@ -173,7 +173,7 @@ const TEXTS = {
 
 
 // 💾 Spielstand speichern
-function saveGame() {
+function () {
   const saveData = {
     playerName,
     currentPuzzle,
@@ -409,10 +409,10 @@ function loadPuzzle() {
   const puzzle = puzzles[currentPuzzle];
   // Next-Button Text anpassen
   if (currentPuzzle === puzzles.length - 1) {
-    nextBtn.textContent = "🎁 Ergebnis ansehen";
-  } else {
-    nextBtn.textContent = "Zum nächsten Rätsel →";
-  }
+  nextBtn.textContent = TEXTS[LANG].finish;
+} else {
+  nextBtn.textContent = TEXTS[LANG].next;
+}
 
   // Progress aktualisieren
   const progressPercent = (currentPuzzle / puzzles.length) * 100;
@@ -458,7 +458,7 @@ function loadPuzzle() {
         if (i === puzzle.correctIndex) {
           feedback.textContent = "🎉 Richtig!";
           nextBtn.style.display = "block";
-          savegame();
+          saveGame();
         } else {
           feedback.textContent = "❌ Falsch!";
           totalWrongAttempts++;
