@@ -508,9 +508,10 @@ startBtn.addEventListener("click", () => {
     startScreen.style.display = "none";
     endScreen.style.display = "block";
 
-    finalTitle.textContent = "👑 Admin – Live-Rangliste";
+    finalTitle.textContent = t("adminTitle");
     finalTime.textContent = "";
     finalErrors.textContent = "";
+
 
     resetLeaderboardBtn.style.display = "block"; // 🔓 Reset-Button für Admin sichtbar machen
 
@@ -793,9 +794,10 @@ nextBtn.addEventListener("click", () => {
     endImage.src = "";
     endImage.src = "assets/images/end.gif";
     
-    finalTitle.textContent = `🎉 Klasse, ${playerName}!`;
-    finalTime.textContent = `⏱️ Deine Zeit: ${getFinalTime()}`;
-    finalErrors.textContent = `❌ Fehlversuche gesamt: ${totalWrongAttempts}`;
+    finalTitle.textContent = t("finishedTitle", playerName);
+    finalTime.textContent = t("finalTime", getFinalTime());
+    finalErrors.textContent = t("finalErrors", totalWrongAttempts);
+
 
     // 🏁 Rangliste
     saveResultOnline();
