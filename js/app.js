@@ -7,6 +7,7 @@ const TEXTS = {
     startTitle: "🎄Willkommen beim Weihnachts-Race🎄",
     startButton: "Start",
     enterName: "Dein Name",
+    checkAnswer: "Antwort prüfen",
     timer: "⏱️ Zeit",
     correct: "🎉 Richtig!",
     wrong: "❌ Falsch!",
@@ -21,6 +22,7 @@ const TEXTS = {
     startTitle: "🎄Welcome to the Christmas Race🎄",
     startButton: "Start",
     enterName: "Your name",
+    checkAnswer: "Check answer",
     timer: "⏱️ Time",
     correct: "🎉 Correct!",
     wrong: "❌ Wrong!",
@@ -391,6 +393,7 @@ startBtn.addEventListener("click", () => {
     playerName = name.split("_")[1];
   }
 }
+  checkBtn.textContent = t("checkAnswer");
 
 
   // 👑 ADMIN-MODUS
@@ -687,6 +690,7 @@ window.addEventListener("load", () => {
   document.querySelector("#start-screen h1").textContent = t("startTitle");
   startBtn.textContent = t("startButton");
   playerNameInput.placeholder = t("enterName");
+  checkBtn.textContent = t("checkAnswer");
   
   const save = loadGame();
 
