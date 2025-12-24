@@ -141,6 +141,34 @@ let startTime = null;
 let timerInterval = null;
 let totalWrongAttempts = 0;
 let playerName = "";
+let LANG = "de";
+const ENGLISH_NAME = "Demarcus";
+
+// 📝 Texte für Sprachen
+const TEXTS = {
+  de: {
+    correct: "🎉 Richtig!",
+    wrong: "❌ Falsch!",
+    next: "Zum nächsten Rätsel →",
+    finish: "🎁 Ergebnis ansehen",
+    time: "⏱️ Deine Zeit:",
+    errors: "❌ Fehlversuche gesamt:",
+    adminTitle: "👑 Admin – Live-Rangliste",
+    resume: name =>
+      `Spielstand von ${name} gefunden.\nMöchtest du weiterspielen?`
+  },
+  en: {
+    correct: "🎉 Correct!",
+    wrong: "❌ Wrong!",
+    next: "Next puzzle →",
+    finish: "🎁 View result",
+    time: "⏱️ Your time:",
+    errors: "❌ Total mistakes:",
+    adminTitle: "👑 Admin – Live leaderboard",
+    resume: name =>
+      `Saved game found for ${name}.\nDo you want to continue?`
+  }
+};
 
 const ADMIN_NAME = "ADMIN"; // Admin Name#
 
@@ -340,6 +368,11 @@ startBtn.addEventListener("click", () => {
   }
 
   playerName = name;
+  // 🌍 Sprache prüfen (Englisch-Modus)
+      if (name.toUpperCase() === ENGLISH_NAME.toUpperCase()) {
+      LANG = "en";
+    }
+
 
   // 👑 ADMIN-MODUS
   if (name.toUpperCase() === ADMIN_NAME) {
