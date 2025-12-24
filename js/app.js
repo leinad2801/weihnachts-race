@@ -444,14 +444,10 @@ const puzzles = [
       "But the very next das, you gave it _ _ _ _ <br>" +
       "This _ _ _ _, to save me from tears..."
   },
-  solutions: [
-    "weihnachtsbäckerei",
-    "leckerei",
-    "milch",
-    "heart",
-    "away",
-    "year"
-  ],
+  solutions: {
+    de: ["weihnachtsbäckerei", "leckerei", "milch"],
+    en: ["heart", "away", "year"]
+  },
   mode: "containsAll",
   hint: {
     de: "💡 Tipp: Ein schönes Kinderweihnachtslied... 🎄",
@@ -651,8 +647,13 @@ checkBtn.addEventListener("click", () => {
   let correct = false;
 
   if (puzzle.mode === "containsAll") {
-    correct = puzzle.solutions.every(w => answer.includes(w));
-  } else {
+  const solutions =
+    typeof puzzle.solutions === "object"
+      ? puzzle.solutions[currentLang]
+      : puzzle.solutions;
+
+  correct = solutions.every(w => answer.includes(w));
+} else {
     correct = puzzle.solutions.some(sol => sol === answer);
   }
 
