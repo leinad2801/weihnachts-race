@@ -282,20 +282,36 @@ function renderLeaderboard() {
 // 🧩 Rätsel 1–10
 const puzzles = [
   {
-    type: "santa",
-    title: "🧩 Rätsel 1",
-    question: "Tippe auf den richtigen falschen Weihnachtsmann 🎅",
-    correctIndex: Math.floor(Math.random() * 6)
+  type: "santa",
+  title: {
+    de: "🧩 Rätsel 1",
+    en: "🧩 Puzzle 1"
   },
+  question: {
+    de: "Tippe auf den richtigen falschen Weihnachtsmann 🎅",
+    en: "Tap the correct wrong Santa 🎅"
+  },
+  correctIndex: Math.floor(Math.random() * 6)
+},
   {
-    type: "text",
-    title: "🧩 Rätsel 2",
-    question: "Was hat viele Nadeln, kann aber nicht nähen?",
-    solutions: ["tannenbaum", "weihnachtsbaum"],
-    image: "assets/images/santa-thinking.png",
-    hint: "💡 Tipp: Künstlich oder echt …",
-    hintImage: "assets/images/christmas-tree.png"
+  type: "text",
+  title: {
+    de: "🧩 Rätsel 2",
+    en: "🧩 Puzzle 2"
   },
+  question: {
+    de: "Was hat viele Nadeln, kann aber nicht nähen?",
+    en: "What has many needles but cannot sew?"
+  },
+  solutions: ["tannenbaum", "weihnachtsbaum", "christmas tree"],
+  image: "assets/images/santa-thinking.png",
+  hint: {
+    de: "💡 Tipp: Künstlich oder echt …",
+    en: "💡 Hint: Artificial or real …"
+  },
+  hintImage: "assets/images/christmas-tree.png"
+},
+
   {
     type: "puzzle",
     title: "🧩 Rätsel 3",
@@ -462,8 +478,17 @@ function loadPuzzle() {
   errorCounter.style.display = "none";
   hint.style.display = "none";
 
-  title.textContent = puzzle.title;
-  question.innerHTML = puzzle.question;
+  // 🌍 Titel setzen (String ODER Sprachobjekt)
+  title.textContent =
+    typeof puzzle.title === "object"
+      ? puzzle.title[currentLang]
+      : puzzle.title;
+
+  // 🌍 Frage setzen (String ODER Sprachobjekt)
+  question.innerHTML =
+    typeof puzzle.question === "object"
+      ? puzzle.question[currentLang]
+      :puzzle.question;
   question.className = "";
 
   // 🎅 Rätsel 1
@@ -558,7 +583,11 @@ checkBtn.addEventListener("click", () => {
   answerInput.value = "";
 
   if (wrongAttempts === 3 && puzzle.hint) {
-    hint.textContent = puzzle.hint;
+    hint.textContent =
+      typeof puzzle.hint === "object"
+      ? puzzle.hint[currentLang]
+      : puzzle.hint;
+
     hint.style.display = "block";
   }
   if (wrongAttempts === 5 && puzzle.hintImage) {
