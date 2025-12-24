@@ -335,8 +335,8 @@ const puzzles = [
     en: "🧩 Puzzle 3"
   },
   question: {
-    de: "Setze das Bild richtig zusammen 🎄",
-    en: "Put the image together correctly 🎄"
+    de: "Setze das Bild durch tippen und tauschen der Teile richtig zusammen 🎄",
+    en: "Tip the image together correctly  🎄"
   }
 },
   {
@@ -424,7 +424,7 @@ const puzzles = [
   },
   question: {
     de:
-      "Zahlenschloss 🔐<br><br>" +
+      "Zahlenschloss 🔐<br><br> gesucht ist ein 4-stelliger Code<br><br>" +
       "S A N T A<br><br>" +
       "100⁰ − 1",
     en:
