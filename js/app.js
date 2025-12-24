@@ -424,7 +424,6 @@ startBtn.addEventListener("click", () => {
     playerName = name.split("_")[1];
   }
 }
-  loadPuzzle();
 
 
   // 👑 ADMIN-MODUS
@@ -735,7 +734,6 @@ window.addEventListener("load", () => {
   document.querySelector("#start-screen h1").textContent = t("startTitle");
   startBtn.textContent = t("startButton");
   playerNameInput.placeholder = t("enterName");
-  checkBtn.textContent = t("checkAnswer");
   
   const save = loadGame();
 
