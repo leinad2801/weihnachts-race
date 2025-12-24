@@ -8,6 +8,7 @@ const TEXTS = {
     startButton: "Start",
     enterName: "Dein Name",
     checkAnswer: "Antwort prüfen",
+    errorCounter: (current, max) => `Fehlversuche: ${current} / ${max}`,
     timer: "⏱️ Zeit",
     correct: "🎉 Richtig!",
     wrong: "❌ Falsch!",
@@ -16,6 +17,7 @@ const TEXTS = {
     finishedTitle: name => `🎉 Klasse, ${name}!`,
     finalTime: time => `⏱️ Deine Zeit: ${time}`,
     finalErrors: errors => `❌ Fehlversuche gesamt: ${errors}`,
+    progress: (current, total) => `Rätsel ${current} / ${total}`,
     adminTitle: "👑 Admin – Live-Rangliste"
   },
   en: {
@@ -24,6 +26,7 @@ const TEXTS = {
     enterName: "Your name",
     checkAnswer: "Check answer",
     timer: "⏱️ Time",
+    errorCounter: (current, max) => `Mistakes: ${current} / ${max}`,
     correct: "🎉 Correct!",
     wrong: "❌ Wrong!",
     next: "Next puzzle →",
@@ -31,6 +34,7 @@ const TEXTS = {
     finishedTitle: name => `🎉 Well done, ${name}!`,
     finalTime: time => `⏱️ Your time: ${time}`,
     finalErrors: errors => `❌ Total mistakes: ${errors}`,
+    progress: (current, total) => `Rätsel ${current} / ${total}`,
     adminTitle: "👑 Admin – Live leaderboard"
   }
 };
@@ -226,7 +230,7 @@ function updateTimer() {
   const elapsed = Math.floor((Date.now() - startTime) / 1000);
   const m = String(Math.floor(elapsed / 60)).padStart(2, "0");
   const s = String(elapsed % 60).padStart(2, "0");
-  timerDisplay.textContent = `⏱️ Zeit: ${m}:${s}`;
+  timerDisplay.textContent = `${t("timer")}: ${m}:${s}`;
 }
 
 function getFinalTime() {
@@ -544,8 +548,11 @@ function loadPuzzle() {
   // Progress aktualisieren
   const progressPercent = (currentPuzzle / puzzles.length) * 100;
   progressBar.style.width = `${progressPercent}%`;
-  progressText.textContent = `Rätsel ${currentPuzzle + 1} / ${puzzles.length}`;
-
+  progressText.textContent = t(
+  "progress",
+  currentPuzzle + 1,
+  puzzles.length
+);
 
   feedback.textContent = "";
   nextBtn.style.display = "none";
@@ -615,7 +622,7 @@ function loadPuzzle() {
   if (puzzle.type === "text" || puzzle.type === "emoji") {
     textPuzzle.style.display = "block";
     answerInput.value = "";
-    errorCounter.textContent = "Fehlversuche: 0 / 5";
+    errorCounter.textContent = t("errorCounter", 0, 5);
     errorCounter.style.display = "block";
 
     if (puzzle.image) {
@@ -671,7 +678,7 @@ checkBtn.addEventListener("click", () => {
   wrongAttempts++;
   totalWrongAttempts++;
   saveGame();
-  errorCounter.textContent = `Fehlversuche: ${wrongAttempts} / 5`;
+  errorCounter.textContent = t("errorCounter", wrongAttempts, 5);
   answerInput.value = "";
 
   if (wrongAttempts === 3 && puzzle.hint) {
