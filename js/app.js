@@ -313,19 +313,34 @@ const puzzles = [
 },
 
   {
-    type: "puzzle",
-    title: "🧩 Rätsel 3",
-    question: "Setze das Bild richtig zusammen 🎄"
+  type: "puzzle",
+  title: {
+    de: "🧩 Rätsel 3",
+    en: "🧩 Puzzle 3"
   },
+  question: {
+    de: "Setze das Bild richtig zusammen 🎄",
+    en: "Put the image together correctly 🎄"
+  }
+},
   {
-    type: "emoji",
-    title: "🧩 Rätsel 4",
-    question:
-      "Gesucht ist ein Songname der zu folgenden Emojis passt:<br><br>⏮️🎄",
-    solutions: ["last christmas"],
-    hint: "💡 Hinweis: Ein sehr bekannter Song 🎤",
-    hintImage: "assets/images/wham.png"
+  type: "emoji",
+  title: {
+    de: "🧩 Rätsel 4",
+    en: "🧩 Puzzle 4"
   },
+  question: {
+    de: "Gesucht ist ein Songname der zu folgenden Emojis passt:<br><br>⏮️🎄",
+    en: "Which song matches the following emojis?<br><br>⏮️🎄"
+  },
+  solutions: ["last christmas"],
+  hint: {
+    de: "💡 Hinweis: Ein sehr bekannter Song 🎤",
+    en: "💡 Hint: A very famous Christmas song 🎤"
+  },
+  hintImage: "assets/images/wham.png"
+},
+
   {
     type: "text",
     title: "🧩 Rätsel 5",
