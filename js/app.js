@@ -430,6 +430,7 @@ startBtn.addEventListener("click", () => {
 // 🔄 Rätsel laden
 function loadPuzzle() {
   const puzzle = puzzles[currentPuzzle];
+  checkBtn.textContent = t("checkAnswer");
   // Next-Button Text anpassen
   if (currentPuzzle === puzzles.length - 1) {
     nextBtn.textContent = t("finish");
