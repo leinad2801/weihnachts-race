@@ -1,3 +1,39 @@
+// 🌍 Sprache
+let currentLang = "de"; // Standard: Deutsch
+
+// 🌍 Texte für alle Sprachen
+const TEXTS = {
+  de: {
+    startTitle: "🎄Willkommen beim Weihnachts-Race🎄",
+    startButton: "Start",
+    enterName: "Dein Name",
+    timer: "⏱️ Zeit",
+    correct: "🎉 Richtig!",
+    wrong: "❌ Falsch!",
+    next: "Zum nächsten Rätsel →",
+    finish: "🎁 Ergebnis ansehen",
+    finishedTitle: name => `🎉 Klasse, ${name}!`,
+    finalTime: time => `⏱️ Deine Zeit: ${time}`,
+    finalErrors: errors => `❌ Fehlversuche gesamt: ${errors}`,
+    adminTitle: "👑 Admin – Live-Rangliste"
+  },
+  en: {
+    startTitle: "🎄Welcome to the Christmas Race🎄",
+    startButton: "Start",
+    enterName: "Your name",
+    timer: "⏱️ Time",
+    correct: "🎉 Correct!",
+    wrong: "❌ Wrong!",
+    next: "Next puzzle →",
+    finish: "🎁 View result",
+    finishedTitle: name => `🎉 Well done, ${name}!`,
+    finalTime: time => `⏱️ Your time: ${time}`,
+    finalErrors: errors => `❌ Total mistakes: ${errors}`,
+    adminTitle: "👑 Admin – Live leaderboard"
+  }
+  t("correct")
+};
+
 // Screens
 const startScreen = document.getElementById("start-screen");
 const gameScreen = document.getElementById("game-screen");
@@ -341,6 +377,17 @@ startBtn.addEventListener("click", () => {
 
   playerName = name;
 
+  // 🌍 Sprache erkennen
+    if (name.toUpperCase().startsWith("EN")) {
+    currentLang = "en";
+
+  // Optional: EN_John → Name = John
+    if (name.includes("_")) {
+    playerName = name.split("_")[1];
+  }
+}
+
+
   // 👑 ADMIN-MODUS
   if (name.toUpperCase() === ADMIN_NAME) {
     startScreen.style.display = "none";
@@ -377,9 +424,9 @@ function loadPuzzle() {
   const puzzle = puzzles[currentPuzzle];
   // Next-Button Text anpassen
   if (currentPuzzle === puzzles.length - 1) {
-    nextBtn.textContent = "🎁 Ergebnis ansehen";
+    nextBtn.textContent = t("finish");
   } else {
-    nextBtn.textContent = "Zum nächsten Rätsel →";
+    nextBtn.textContent = t("next");
   }
 
   // Progress aktualisieren
@@ -424,11 +471,11 @@ function loadPuzzle() {
       div.appendChild(img);
       div.onclick = () => {
         if (i === puzzle.correctIndex) {
-          feedback.textContent = "🎉 Richtig!";
+          feedback.textContent = t("correct");
           nextBtn.style.display = "block";
           savegame();
         } else {
-          feedback.textContent = "❌ Falsch!";
+          feedback.textContent = t("wrong");
           totalWrongAttempts++;
           div.classList.add("shake");
 
@@ -485,7 +532,7 @@ checkBtn.addEventListener("click", () => {
   }
 
   if (correct) {
-  feedback.textContent = "🎉 Richtig!";
+  feedback.textContent = t("correct");
   nextBtn.style.display = "block";
 
   // Letztes Rätsel → Zeit speichern & Timer stoppen
@@ -656,3 +703,8 @@ window.addEventListener("load", () => {
   timerInterval = setInterval(updateTimer, 1000);
   loadPuzzle();
 });
+
+document.querySelector("#start-screen h1").textContent = t("startTitle");
+startBtn.textContent = t("startButton");
+playerNameInput.placeholder = t("enterName");
+
