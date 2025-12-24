@@ -31,8 +31,13 @@ const TEXTS = {
     finalErrors: errors => `❌ Total mistakes: ${errors}`,
     adminTitle: "👑 Admin – Live leaderboard"
   }
-  t("correct")
 };
+
+function t(key, ...args) {
+  const value = TEXTS[currentLang][key];
+  return typeof value === "function" ? value(...args) : value;
+}
+
 
 // Screens
 const startScreen = document.getElementById("start-screen");
@@ -473,7 +478,7 @@ function loadPuzzle() {
         if (i === puzzle.correctIndex) {
           feedback.textContent = t("correct");
           nextBtn.style.display = "block";
-          savegame();
+          saveGame();
         } else {
           feedback.textContent = t("wrong");
           totalWrongAttempts++;
