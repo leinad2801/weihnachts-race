@@ -18,7 +18,12 @@ const TEXTS = {
     finalTime: time => `⏱️ Deine Zeit: ${time}`,
     finalErrors: errors => `❌ Fehlversuche gesamt: ${errors}`,
     progress: (current, total) => `Rätsel ${current} / ${total}`,
-    adminTitle: "👑 Admin – Live-Rangliste"
+    adminTitle: "👑 Admin – Live-Rangliste",
+    giftTitle: "Frohe Weihnachten!",
+    giftText:
+      "Du bist im Ziel angekommen und deine Zeit steht fest.<br>" +
+      "Jetzt heißt es warten, bis alle anderen das Rennen beendet haben.<br>" +
+      "Wer die schnellste Zeit hat, bekommt zuerst sein Geschenk. 🎅🏼"
   },
   en: {
     startTitle: "🎄Welcome to the Christmas Race🎄",
@@ -34,8 +39,13 @@ const TEXTS = {
     finishedTitle: name => `🎉 Well done, ${name}!`,
     finalTime: time => `⏱️ Your time: ${time}`,
     finalErrors: errors => `❌ Total mistakes: ${errors}`,
-    progress: (current, total) => `Rätsel ${current} / ${total}`,
+    progress: (current, total) => `Puzzle ${current} / ${total}`,
     adminTitle: "👑 Admin – Live leaderboard"
+    giftTitle: "Merry Christmas!",
+    giftText:
+      "You have reached the finish line and your time is set.<br>" +
+      "Now you just have to wait until everyone else finishes the race.<br>" +
+      "Whoever has the fastest time gets their present first. 🎅🏼"
   }
 };
 
