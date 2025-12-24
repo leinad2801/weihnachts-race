@@ -342,66 +342,143 @@ const puzzles = [
 },
 
   {
-    type: "text",
-    title: "🧩 Rätsel 5",
-    question:
+  type: "text",
+  title: {
+    de: "🧩 Rätsel 5",
+    en: "🧩 Puzzle 5"
+  },
+  question: {
+    de:
       "Ich stehe oft auf dem Tisch, mache Licht,<br>" +
       "bin warm und weich,<br>" +
       "wenn ich brenne, schenke ich oft Freude,<br>" +
       "aber wenn ich alt werde, bin ich klein und leer.",
-    solutions: ["kerze", "kerzen"],
-    image: "assets/images/candle.png",
-    hint: "Mich gibt es in vielen Formen & Düften …",
-    hintImage: "assets/images/candle-hint.png"
+    en:
+      "I often stand on the table and give light,<br>" +
+      "I am warm and soft,<br>" +
+      "when I burn, I often bring joy,<br>" +
+      "but when I get old, I am small and empty."
   },
-  {
-    type: "maze",
-    title: "🧩 Rätsel 6",
-    question: "Tippe Santa 🎅 durch das Labyrinth zum Geschenk 🎁"
+  solutions: ["kerze", "kerzen", "candle"],
+  image: "assets/images/candle.png",
+  hint: {
+    de: "Mich gibt es in vielen Formen & Düften …",
+    en: "I come in many shapes and scents …"
   },
+  hintImage: "assets/images/candle-hint.png"
+},
+
   {
-    type: "emoji",
-    title: "🧩 Rätsel 7",
-    question:
-      "Gesucht ist eine Filmreihe:<br><br>👦🏼🏠🙅‍♂️🙅‍♀️",
-    solutions: ["kevin allein zu haus", "kevin allein zu hause"],
-    hint: "💡 Tipp: Ein Weihnachtsklassiker aus den 90ern …",
-    hintImage: "assets/images/home-alone.png"
+  type: "maze",
+  title: {
+    de: "🧩 Rätsel 6",
+    en: "🧩 Puzzle 6"
   },
+  question: {
+    de: "Tippe Santa 🎅 durch das Labyrinth zum Geschenk 🎁",
+    en: "Guide Santa 🎅 through the maze to the present 🎁"
+  }
+},
   {
-    type: "text",
-    title: "🧩 Rätsel 8",
-    question:
+  type: "emoji",
+  title: {
+    de: "🧩 Rätsel 7",
+    en: "🧩 Puzzle 7"
+  },
+  question: {
+    de: "Gesucht ist eine Filmreihe:<br><br>👦🏼🏠🙅‍♂️🙅‍♀️",
+    en: "Which movie series is shown by these emojis?<br><br>👦🏼🏠🙅‍♂️🙅‍♀️"
+  },
+  solutions: [
+    "kevin allein zu haus",
+    "kevin allein zu hause",
+    "home alone"
+  ],
+  hint: {
+    de: "💡 Tipp: Ein Weihnachtsklassiker aus den 90ern …",
+    en: "💡 Hint: A Christmas classic from the 90s …"
+  },
+  hintImage: "assets/images/home-alone.png"
+},
+{
+  type: "text",
+  title: {
+    de: "🧩 Rätsel 8",
+    en: "🧩 Puzzle 8"
+  },
+  question: {
+    de:
       "Zahlenschloss 🔐<br><br>" +
       "S A N T A<br><br>" +
       "100⁰ − 1",
-    solutions: ["5050"],
-    hint: "💡 Tipp: Die Summe von 1+2+...+100",
-    hintImage: "assets/images/lock-hint.png"
+    en:
+      "Number lock 🔐<br><br>" +
+      "S A N T A<br><br>" +
+      "100⁰ − 1"
   },
+  solutions: ["5050"],
+  hint: {
+    de: "💡 Tipp: Die Summe von 1+2+...+100",
+    en: "💡 Hint: The sum of 1+2+...+100"
+  },
+  hintImage: "assets/images/lock-hint.png"
+},
+
   {
-    type: "text",
-    title: "🧩 Rätsel 9",
-    question:
+  type: "text",
+  title: {
+    de: "🧩 Rätsel 9",
+    en: "🧩 Puzzle 9"
+  },
+  question: {
+    de:
       "🎶 Vervollständige den Liedtext:<br><br>" +
       "Bitte gib die 3 Wörter einfach mit einem Leerzeichen getrennt unten ein.<br><br>"+
       "In der _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br>" +
       "Gibt es so manche _ _ _ _ _ _ _ _,<br>" +
       "Zwischen Mehl und _ _ _ _ _ ...",
-    solutions: ["weihnachtsbäckerei", "leckerei", "milch"],
-    mode: "containsAll",
-    hint: "💡 Tipp: Ein schönes Kinderweihnachtslied... 🎄",
-    hintImage: "assets/images/weihnachtsbaeckerei.png"
+    en:
+      "🎶 Complete the song lyrics:<br><br>" +
+      "Please enter the 3 words separated by spaces below.<br><br>" +
+      "In the _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br>" +
+      "There are many _ _ _ _ _ _ _ _,<br>" +
+      "Between flour and _ _ _ _ _ ..."
   },
+  solutions: [
+    "weihnachtsbäckerei",
+    "leckerei",
+    "milch",
+    "christmas bakery",
+    "treat",
+    "milk"
+  ],
+  mode: "containsAll",
+  hint: {
+    de: "💡 Tipp: Ein schönes Kinderweihnachtslied... 🎄",
+    en: "💡 Hint: A popular children's Christmas song 🎄"
+  },
+  hintImage: "assets/images/weihnachtsbaeckerei.png"
+},
+
   {
-    type: "text",
-    title: "🧩 Rätsel 10",
-    question: "Wie viele Rentiere hat der Weihnachtsmann?",
-    solutions: ["9"],
-    image: "assets/images/rentier-santa.png",
-    hint: "💡 Tipp: Meine Rückennummer bei Tura Oberdrees.",
-    hintImage: "assets/images/rentier-santa.png"
-  }
+  type: "text",
+  title: {
+    de: "🧩 Rätsel 10",
+    en: "🧩 Puzzle 10"
+  },
+  question: {
+    de: "Wie viele Rentiere hat der Weihnachtsmann?",
+    en: "How many reindeer does Santa have?"
+  },
+  solutions: ["9"],
+  image: "assets/images/rentier-santa.png",
+  hint: {
+    de: "💡 Tipp: Meine Rückennummer bei Tura Oberdrees.",
+    en: "💡 Hint: Think of Rudolph and the others."
+  },
+  hintImage: "assets/images/rentier-santa.png"
+}
+
 ];
 
 // ▶️ START
