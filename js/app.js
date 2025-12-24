@@ -148,6 +148,7 @@ const ENGLISH_NAME = "Demarcus";
 // 📝 Texte für Sprachen
 const TEXTS = {
   de: {
+    start: "Spiel starten",
     correct: "🎉 Richtig!",
     wrong: "❌ Falsch!",
     next: "Zum nächsten Rätsel →",
@@ -157,9 +158,9 @@ const TEXTS = {
     adminTitle: "👑 Admin – Live-Rangliste",
     resume: name =>
       `Spielstand von ${name} gefunden.\nMöchtest du weiterspielen?`
-    start: "Spiel starten"
   },
   en: {
+    start: "Start game",
     correct: "🎉 Correct!",
     wrong: "❌ Wrong!",
     next: "Next puzzle →",
@@ -169,7 +170,6 @@ const TEXTS = {
     adminTitle: "👑 Admin – Live leaderboard",
     resume: name =>
       `Saved game found for ${name}.\nDo you want to continue?`
-    start: "Start game"
   }
 };
 
