@@ -40,7 +40,7 @@ const TEXTS = {
     finalTime: time => `⏱️ Your time: ${time}`,
     finalErrors: errors => `❌ Total mistakes: ${errors}`,
     progress: (current, total) => `Puzzle ${current} / ${total}`,
-    adminTitle: "👑 Admin – Live leaderboard"
+    adminTitle: "👑 Admin – Live leaderboard",
     giftTitle: "Merry Christmas!",
     giftText:
       "You have reached the finish line and your time is set.<br>" +
