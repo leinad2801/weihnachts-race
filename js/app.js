@@ -409,7 +409,7 @@ startBtn.addEventListener("click", () => {
     playerName = name.split("_")[1];
   }
 }
-  checkBtn.textContent = t("checkAnswer");
+  loadPuzzle();
 
 
   // 👑 ADMIN-MODUS
