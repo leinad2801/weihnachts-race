@@ -241,7 +241,7 @@ const puzzles = [
   {
     type: "santa",
     title: "🧩 Rätsel 1",
-    question: "Tippe auf den lachenden Weihnachtsmann 🎅",
+    question: "Tippe auf den richtigen falschen Weihnachtsmann 🎅",
     correctIndex: Math.floor(Math.random() * 6)
   },
   {
