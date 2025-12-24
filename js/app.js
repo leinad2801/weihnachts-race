@@ -86,6 +86,8 @@ const progressText = document.getElementById("progress-text");
 const playerNameInput = document.getElementById("player-name");
 const finalTitle = document.getElementById("final-title");
 const leaderboardList = document.getElementById("leaderboard-list");
+const giftTitle = document.getElementById("gift-title");
+const giftText = document.getElementById("gift-text");
 
 // Timer
 const timerDisplay = document.getElementById("timer");
@@ -807,6 +809,10 @@ nextBtn.addEventListener("click", () => {
     finalTitle.textContent = t("finishedTitle", playerName);
     finalTime.textContent = t("finalTime", getFinalTime());
     finalErrors.textContent = t("finalErrors", totalWrongAttempts);
+
+    giftTitle.textContent = t("giftTitle");
+    giftText.innerHTML = t("giftText");
+
 
 
     // 🏁 Rangliste
