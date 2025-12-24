@@ -440,22 +440,22 @@ const puzzles = [
     en:
       "🎶 Complete the song lyrics:<br><br>" +
       "Please enter the 3 words separated by spaces below.<br><br>" +
-      "In the _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _<br>" +
-      "There are many _ _ _ _ _ _ _ _,<br>" +
-      "Between flour and _ _ _ _ _ ..."
+      "Last Christmas, i gave you my _ _ _ _ _<br>" +
+      "But the very next das, you gave it _ _ _ _ <br>" +
+      "This _ _ _ _, to save me from tears..."
   },
   solutions: [
     "weihnachtsbäckerei",
     "leckerei",
     "milch",
-    "christmas bakery",
-    "treat",
-    "milk"
+    "heart",
+    "away",
+    "year"
   ],
   mode: "containsAll",
   hint: {
     de: "💡 Tipp: Ein schönes Kinderweihnachtslied... 🎄",
-    en: "💡 Hint: A popular children's Christmas song 🎄"
+    en: "💡 Hint: A popular Christmas song 🎄"
   },
   hintImage: "assets/images/weihnachtsbaeckerei.png"
 },
