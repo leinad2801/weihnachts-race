@@ -173,7 +173,7 @@ const TEXTS = {
 
 
 // 💾 Spielstand speichern
-function () {
+function saveGame() {
   const saveData = {
     playerName,
     currentPuzzle,
