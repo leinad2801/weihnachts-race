@@ -141,38 +141,8 @@ let startTime = null;
 let timerInterval = null;
 let totalWrongAttempts = 0;
 let playerName = "";
+
 const ADMIN_NAME = "ADMIN"; // Admin Name#
-let LANG = "de";
-const ENGLISH_NAME = "Demarcus";
-
-// 📝 Texte für Sprachen
-const TEXTS = {
-  de: {
-    start: "Spiel starten",
-    correct: "🎉 Richtig!",
-    wrong: "❌ Falsch!",
-    next: "Zum nächsten Rätsel →",
-    finish: "🎁 Ergebnis ansehen",
-    time: "⏱️ Deine Zeit:",
-    errors: "❌ Fehlversuche gesamt:",
-    adminTitle: "👑 Admin – Live-Rangliste",
-    resume: name =>
-      `Spielstand von ${name} gefunden.\nMöchtest du weiterspielen?`
-  },
-  en: {
-    start: "Start game",
-    correct: "🎉 Correct!",
-    wrong: "❌ Wrong!",
-    next: "Next puzzle →",
-    finish: "🎁 View result",
-    time: "⏱️ Your time:",
-    errors: "❌ Total mistakes:",
-    adminTitle: "👑 Admin – Live leaderboard",
-    resume: name =>
-      `Saved game found for ${name}.\nDo you want to continue?`
-  }
-};
-
 
 // 💾 Spielstand speichern
 function saveGame() {
@@ -370,13 +340,6 @@ startBtn.addEventListener("click", () => {
   }
 
   playerName = name;
-  // 🌍 Sprache festlegen
-  LANG = name.toUpperCase() === ENGLISH_NAME.toUpperCase() ? "en" : "de";
-  startBtn.textContent = TEXTS[LANG].start;
-  checkBtn.textContent = TEXTS[LANG].check ?? "Check";
-
-
-
 
   // 👑 ADMIN-MODUS
   if (name.toUpperCase() === ADMIN_NAME) {
@@ -414,10 +377,10 @@ function loadPuzzle() {
   const puzzle = puzzles[currentPuzzle];
   // Next-Button Text anpassen
   if (currentPuzzle === puzzles.length - 1) {
-  nextBtn.textContent = TEXTS[LANG].finish;
-} else {
-  nextBtn.textContent = TEXTS[LANG].next;
-}
+    nextBtn.textContent = "🎁 Ergebnis ansehen";
+  } else {
+    nextBtn.textContent = "Zum nächsten Rätsel →";
+  }
 
   // Progress aktualisieren
   const progressPercent = (currentPuzzle / puzzles.length) * 100;
@@ -461,11 +424,11 @@ function loadPuzzle() {
       div.appendChild(img);
       div.onclick = () => {
         if (i === puzzle.correctIndex) {
-          feedback.textContent = TEXTS[LANG].correct;
+          feedback.textContent = "🎉 Richtig!";
           nextBtn.style.display = "block";
-          saveGame();
+          savegame();
         } else {
-          feedback.textContent = TEXTS[LANG].wrong;
+          feedback.textContent = "❌ Falsch!";
           totalWrongAttempts++;
           div.classList.add("shake");
 
@@ -522,7 +485,7 @@ checkBtn.addEventListener("click", () => {
   }
 
   if (correct) {
-  feedback.textContent = TEXTS[LANG].correct;
+  feedback.textContent = "🎉 Richtig!";
   nextBtn.style.display = "block";
 
   // Letztes Rätsel → Zeit speichern & Timer stoppen
@@ -574,7 +537,7 @@ function handlePuzzleClick(piece) {
   selectedPiece = null;
 
   if (checkPuzzleSolved()) {
-    feedback.textContent = TEXTS[LANG].correct;
+    feedback.textContent = "🎉 Puzzle gelöst!";
     nextBtn.style.display = "block";
     saveGame();
   }
@@ -618,7 +581,7 @@ mazeControls.addEventListener("click", e => {
     santaPos = { x: nx, y: ny };
     renderMaze();
     if (maze[ny][nx] === "G") {
-      feedback.textContent = TEXTS[LANG].correct;
+      feedback.textContent = "🎉 Geschafft!";
       nextBtn.style.display = "block";
       mazeControls.style.display = "none";
       saveGame();
@@ -680,7 +643,6 @@ window.addEventListener("load", () => {
     clearGame();
     return;
   }
-  startBtn.textContent = TEXTS[LANG].start;
 
   // 🔄 Spielzustand wiederherstellen
   playerName = save.playerName;
@@ -694,6 +656,3 @@ window.addEventListener("load", () => {
   timerInterval = setInterval(updateTimer, 1000);
   loadPuzzle();
 });
-
-
-
