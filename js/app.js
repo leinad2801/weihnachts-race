@@ -677,6 +677,12 @@ resetLeaderboardBtn.addEventListener("click", () => {
 });
 
 window.addEventListener("load", () => {
+  
+  // 🌍 Startscreen-Texte setzen (WICHTIG!)
+  document.querySelector("#start-screen h1").textContent = t("startTitle");
+  startBtn.textContent = t("startButton");
+  playerNameInput.placeholder = t("enterName");
+  
   const save = loadGame();
 
   if (!save) return;
@@ -704,7 +710,4 @@ window.addEventListener("load", () => {
   loadPuzzle();
 });
 
-document.querySelector("#start-screen h1").textContent = t("startTitle");
-startBtn.textContent = t("startButton");
-playerNameInput.placeholder = t("enterName");
 
