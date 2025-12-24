@@ -11,7 +11,6 @@ const restartBtn = document.getElementById("restartBtn");
 const resetLeaderboardBtn = document.getElementById("resetLeaderboardBtn");
 resetLeaderboardBtn.style.display = "none"; // Reset-Button standardmäßig verstecken
 
-
 // Elemente
 const title = document.getElementById("puzzle-title");
 const question = document.getElementById("question");
