@@ -456,11 +456,11 @@ function loadPuzzle() {
       div.appendChild(img);
       div.onclick = () => {
         if (i === puzzle.correctIndex) {
-          feedback.textContent = "🎉 Richtig!";
+          feedback.textContent = TEXTS[LANG].correct;
           nextBtn.style.display = "block";
           saveGame();
         } else {
-          feedback.textContent = "❌ Falsch!";
+          feedback.textContent = TEXTS[LANG].wrong;
           totalWrongAttempts++;
           div.classList.add("shake");
 
@@ -517,7 +517,7 @@ checkBtn.addEventListener("click", () => {
   }
 
   if (correct) {
-  feedback.textContent = "🎉 Richtig!";
+  feedback.textContent = TEXTS[LANG].correct;
   nextBtn.style.display = "block";
 
   // Letztes Rätsel → Zeit speichern & Timer stoppen
@@ -569,7 +569,7 @@ function handlePuzzleClick(piece) {
   selectedPiece = null;
 
   if (checkPuzzleSolved()) {
-    feedback.textContent = "🎉 Puzzle gelöst!";
+    feedback.textContent = TEXTS[LANG].correct;
     nextBtn.style.display = "block";
     saveGame();
   }
@@ -613,7 +613,7 @@ mazeControls.addEventListener("click", e => {
     santaPos = { x: nx, y: ny };
     renderMaze();
     if (maze[ny][nx] === "G") {
-      feedback.textContent = "🎉 Geschafft!";
+      feedback.textContent = TEXTS[LANG].correct;
       nextBtn.style.display = "block";
       mazeControls.style.display = "none";
       saveGame();
